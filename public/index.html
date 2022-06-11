@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <!-- Scripts CSS -->
+        <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+          <!-- Scripts js -->
+<script type="text/javascript" src="C:\Users\joto2\Desktop\PIEDRA-PAPEL-TIJERA\PIEDRA-PAPEL-TIJERA\index.js"></script>
+
+        <title>PIEDRA-PAPEL-TIJERA</title>
+    </head>
+    <body>
+        <form action="recuperardatos" method="post">  
+        <div class="box">
+
+        <div>
+            <img src="img/inicio.jpg"   >
+        </div>
+<br/>
+<div>
+    <div id="usuario">
+         <img src="img/interrogacion.jpg"  id="im" width="120" height="95" >
+    </div>
+    <div id="maquina">
+        <img src="img/interrogacion.jpg"  id="im" width="120" height="95" > 
+    </div>
+</div>     
+<br/>
+        <div aling="center">
+                <select name="op" onchange="document.getElementById('im').src = this.value">
+                <option value="img/piedra.jpg">PIEDRA</option>
+                <option value="img/papel.jpg">PAPEL</option>
+                <option value="img/tijera.jpg">TIJERA</option>
+                </select>
+        </div>
+<br/>
+<div aling="center">
+    <input type="submit" value="JUGAR">
+</div>
+        
+
+        </div>
+    </form>
+    </body>
+</html>
