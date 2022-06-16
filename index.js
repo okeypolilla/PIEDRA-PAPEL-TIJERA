@@ -11,7 +11,7 @@ const mime = {
   'mp3': 'audio/mpeg3',
   'mp4': 'video/mp4'
 }
-
+ let img = "";
 const servidor = http.createServer((pedido, respuesta) => {
   const url = new URL('http://localhost:8888' + pedido.url)
   let camino = 'public' + url.pathname
@@ -57,7 +57,6 @@ function encaminar(pedido, respuesta, camino) {
   }
 }
 
-
 function recuperar(pedido, respuesta) {
   let info = ''
   pedido.on('data', datosparciales => {
@@ -76,14 +75,20 @@ function recuperar(pedido, respuesta) {
       <body>
       <div class="box">
       <div>
-      <img src="${formulario.get('op')}"   >
+      <img src="${compara(formulario.get('op'))}" id="im" width="120" height="95"  >
       </div
-     Nombre de usuario:${formulario.get('op')}<br>
-     
-     <div aling="center">
-     <a href="index.html">JUGAR DE NUEVO</a>
-     </div>
-    
+      <div>
+      <img src=${formulario.get('op')}  id="im" width="120" height="95" >
+      <h1>usuario</h1>
+      </div>
+      <div>
+        <img src=${img}  id="im" width="120" height="95" > 
+        <h1>maquina</h1>
+    </div>
+    <div aling="center">
+    <a href="index.html">JUGAR DE NUEVO</a>
+    </div>
+    </div>
      </div>
      
      </body></html>`
@@ -93,3 +98,59 @@ function recuperar(pedido, respuesta) {
 
 
 console.log('Servidor web iniciado')
+
+
+
+function opmaquina(){
+  var maquina = Math.floor(Math.random() * (3 - 0)) + 1;
+
+  switch (maquina) {
+      case 1:
+        
+        return  "img/tijera.jpg";
+      break;
+      case 2:
+        return  "img/piedra.jpg";
+    break;
+    case 3:
+      return "img/papel.jpg";
+    break;
+  }
+  
+}
+
+function compara(usuario){
+  var OP=opmaquina(); img = OP; let win = false;
+  console.log("MAQUINA " + OP + " USUARIO " + usuario)
+//estos son los if que evalua si pierdes
+
+  if(usuario == OP){
+    console.log('Entre') 
+    win = true
+    return "img/empate.jpg";
+  }
+
+  if(usuario === "img/tijera.jpg" && OP === "img/papel.jpg"){
+    console.log('EntreTI')
+    win = true
+    return "img/ganaste.jpg";
+  }
+
+  if(usuario === "img/papel.jpg" && OP === "img/piedra.jpg"){
+    console.log('EntrePA')
+    win = true
+    return "img/ganaste.jpg";
+  }
+  
+  if(usuario === "img/piedra.jpg" && OP === "img/tijera.jpg"){
+    console.log('EntrePI')
+    win = true
+    return "img/ganaste.jpg";
+  }
+
+  if(win != true){return "img/perdiste.jpg"}
+}
+
+function mostrarMaquina(op){
+  return op;
+}
